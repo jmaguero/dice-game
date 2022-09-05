@@ -1,7 +1,7 @@
 import './App.css';
 import PlayerRoll from './components/PlayerRoll';
 import Scoreboard from './components/Scoreboard';
-import { useEffect, useInsertionEffect, useState } from 'react';
+import { useState } from 'react';
 
 const rollRandomFunc = () => {
   const min = Math.ceil(1);
@@ -9,8 +9,8 @@ const rollRandomFunc = () => {
   return Math.floor(Math.random() * (max - min) + min);
 }
 function App() {
-  const [p1Score, setp1Score] = useState(0);
-  const [p2Score, setp2Score] = useState(0);
+  const [p1Score, setp1Score] = useState(9);
+  const [p2Score, setp2Score] = useState(9);
   const [dieScore1, setDieScore1] = useState(0);
   const [dieScore2, setDieScore2] = useState(0);
   const [turnMessage, setTurnMessage] = useState("")
@@ -42,11 +42,11 @@ function App() {
     }
     if (p1Score >= 10) {
       setTurnMessage("")
-      setFinalGame("P1 WINS")
+      setFinalGame(`P1 WINS Score:${p1Score}`)
     } else {
       if (p2Score >= 10) {
         setTurnMessage("")
-        setFinalGame("P2 WINS")
+        setFinalGame(`P2 WINS Score:${p2Score}`)
       }
     }
   }
